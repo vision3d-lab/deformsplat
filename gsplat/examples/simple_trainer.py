@@ -55,7 +55,7 @@ sys.path.append("../RoMa")
 
 import torch.nn as nn
 from jhutil.algorithm import knn as knn_jh
-from deformsplat_util.helper import (
+from util.helper import (
     load_points_and_anchor,
     save_points_and_anchor,
     make_simple_goal,
@@ -72,8 +72,8 @@ from deformsplat_util.helper import (
     get_drag_mask,
     count_covered_patches,
 )
-from deformsplat_util.visibility import compute_visibility
-from deformsplat_util.mini_pytorch3d import quaternion_multiply, matrix_to_quaternion
+from util.visibility import compute_visibility
+from util.mini_pytorch3d import quaternion_multiply, matrix_to_quaternion
 from jhutil import show_matching, show_groups
 from jhutil import (
     get_img_diff,
@@ -81,11 +81,10 @@ from jhutil import (
     crop_two_image_with_alpha,
     save_motion_img,
 )
-from deformsplat_util.roma import get_drag_roma
+from util.roma import get_drag_roma
 import warnings
-import torch_fpsample
 
-from deformsplat_util.rigid_grouping import local_rigid_grouping, naive_rigid_grouping, refine_rigid_group
+from util.rigid_grouping import local_rigid_grouping, naive_rigid_grouping, refine_rigid_group
 from jhutil import save_video, bkgd2white
 from torch.nn import SmoothL1Loss
 from torch.optim.lr_scheduler import LambdaLR
@@ -926,7 +925,7 @@ class Runner:
         torch.cuda.empty_cache()
         
     def update_sh_with_group_id(self, group_id_all, only_idx=-1):
-        from deformsplat_util.torch_splat import rgb_to_sh
+        from util.torch_splat import rgb_to_sh
         from jhutil import PALATTE
 
         sh0 = torch.zeros_like(self.splats["sh0"])

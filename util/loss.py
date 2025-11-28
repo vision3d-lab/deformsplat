@@ -1,6 +1,6 @@
 import torch
 import torch.nn.functional as F
-from deformsplat_util.drot_loss import PointLossFunction
+from util.drot_loss import PointLossFunction
 from jhutil import (
     get_img_diff,
     crop_two_image_with_background,

@@ -7,13 +7,13 @@ from tqdm import tqdm
 from simple_trainer import Runner
 from simple_trainer import *
 
-from deformsplat_util.loss import arap_loss, drag_loss, arap_loss_grouped
-from deformsplat_util.mini_pytorch3d import quaternion_to_matrix
+from util.loss import arap_loss, drag_loss, arap_loss_grouped
+from util.mini_pytorch3d import quaternion_to_matrix
 from jhutil.algorithm import knn as knn_jh
-from deformsplat_util.mini_pytorch3d import quaternion_multiply
-from deformsplat_util.roma import get_drag_roma
-from deformsplat_util.rigid_grouping import local_rigid_grouping, naive_rigid_grouping, refine_rigid_group
-from deformsplat_util.helper import (
+from util.mini_pytorch3d import quaternion_multiply
+from util.roma import get_drag_roma
+from util.rigid_grouping import local_rigid_grouping, naive_rigid_grouping, refine_rigid_group
+from util.helper import (
     rbf_weight,
     voxelize_pointcloud_and_get_means,
     linear_blend_skinning_knn,
@@ -92,7 +92,7 @@ class DeformRunner(Runner):
             points_2d, points_depth = self.project_to_2d(points_3d)
 
         vis_mask = self.get_visibility_mask()
-        from deformsplat_util.helper import get_drag_mask
+        from util.helper import get_drag_mask
         points_mask, drag_indice = get_drag_mask(
             points_2d, vis_mask, drag_source, filter_distance
         )
@@ -300,7 +300,7 @@ class DeformRunner(Runner):
         means_homo = torch.concat([self.splats["means"], torch.ones((self.splats["means"].shape[0], 1), device=self.device)], dim=1)
         self.splats["means"] = means_homo @ camtoworlds_residual[0][:, :3]
         
-        from deformsplat_util.mini_pytorch3d import matrix_to_quaternion
+        from util.mini_pytorch3d import matrix_to_quaternion
         quat_residual = matrix_to_quaternion(camtoworlds_residual[0, :3, :3].T)
         self.splats["quats"] = quaternion_multiply(quat_residual, self.splats["quats"])
         
