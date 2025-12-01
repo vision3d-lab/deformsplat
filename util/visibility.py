@@ -6,7 +6,6 @@ from gsplat.cuda._torch_impl import (
     _persp_proj,
     _quat_to_rotmat,
 )
-from jhutil import cache_output
 
 
 def _fully_fused_projection2(
@@ -126,7 +125,6 @@ def _compute_visibility(means2d, cov2d, opacities, depths):
 
 
 @torch.no_grad()
-@cache_output(func_name="compute_visibility")
 def compute_visibility(
     width, height, means3d, quats, opacities, scales, Ks, camtoworlds
 ):

@@ -3,7 +3,6 @@ import numpy as np
 import random
 import cv2
 from jhutil.algorithm import knn, ball_query
-from jhutil import cache_output
 from .loss import arap_loss
 
 
@@ -86,7 +85,6 @@ def naive_rigid_grouping(points_3d, drag_target, reprojection_error, camera_matr
     return groups
 
 
-@cache_output(func_name="local_rigid_grouping")
 def local_rigid_grouping(
     points_3d: torch.Tensor,
     points_2d: torch.Tensor,

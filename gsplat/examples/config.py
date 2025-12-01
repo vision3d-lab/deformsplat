@@ -151,7 +151,7 @@ class Config:
 
     object_name: str = None
 
-    wandb_group: str = None
+    wandb_group: str = "deformsplat"
 
     wandb_sweep: bool = False
     
@@ -205,7 +205,7 @@ hyperparam = EasyDict({
         "cycle_threshold": 10,
         "lr_motion": 3e-4,
         "lr_q": 0.03,
-        "lr_t": 0.e23,
+        "lr_t": 0.003,
         "min_inlier_ratio": 0.7,
         "n_anchor": 300,
         "rbf_gamma": 50,

@@ -55,23 +55,7 @@ sys.path.append("../RoMa")
 
 import torch.nn as nn
 from jhutil.algorithm import knn as knn_jh
-from util.helper import (
-    load_points_and_anchor,
-    save_points_and_anchor,
-    make_simple_goal,
-    rbf_weight,
-    deform_point_cloud_arap,
-    voxelize_pointcloud_and_get_means,
-    linear_blend_skinning_knn,
-    cluster_largest,
-    get_visible_mask_by_depth,
-    get_target_indices_drag,
-    project_pointcloud_to_2d,
-    deform_point_cloud_arap_2d,
-    knn_djastra,
-    get_drag_mask,
-    count_covered_patches,
-)
+from util.helper import cluster_largest
 from util.visibility import compute_visibility
 from util.mini_pytorch3d import quaternion_multiply, matrix_to_quaternion
 from jhutil import show_matching, show_groups
@@ -94,6 +78,7 @@ warnings.simplefilter("ignore")
 
 
 from config import Config, hyperparam
+from jhutil import color_log
             
 
 def create_splats_with_optimizers(
@@ -884,7 +869,7 @@ class Runner:
                     "num_GS": len(self.splats["means"]),
                 }
             )
-            from jhutil import color_log; color_log(0000, f"PSNR: {stats['psnr']:.3f}, SSIM: {stats['ssim']:.4f}, LPIPS: {stats['lpips']:.3f} ")
+            color_log(0000, f"PSNR: {stats['psnr']:.3f}, SSIM: {stats['ssim']:.4f}, LPIPS: {stats['lpips']:.3f} ")
             print(
                 f"Time: {stats['ellipse_time']:.3f}s/image "
                 f"Number of GS: {stats['num_GS']}"

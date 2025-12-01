@@ -26,7 +26,7 @@ bash ${script_name} 0     world_globe      0020       0074     00      ${wandb_g
 bash ${script_name} 0     hour_glass       0100       0200     00      ${wandb_group_name} &&
 bash ${script_name} 0     k1_double_punch  0270       0282     01      ${wandb_group_name} &&
 bash ${script_name} 0     k1_hand_stand    0412       0426     01      ${wandb_group_name} &&
-bash ${script_name} 0     k1_push_up       0541       0557     01      ${wandb_group_name} &&
+bash ${script_name} 0     k1_push_up       0541       0557     01      ${wandb_group_name}
 
 
 wait

@@ -6,7 +6,7 @@ from PIL import Image
 import torch.nn.functional as F
 import numpy as np
 from roma import roma_outdoor
-from jhutil import save_img, cache_output, crop_two_image_with_alpha
+from jhutil import save_img, crop_two_image_with_alpha
 from jhutil import to_cuda
 from datetime import datetime
 import time
@@ -14,7 +14,6 @@ import time
 roma_model = None
 
 
-@cache_output(func_name="roma_match", override=False, verbose=False)
 def roma_match(im1_path_crop, im2_path_crop, device) -> None:
     global roma_model
     if roma_model is None:
@@ -26,7 +25,6 @@ def roma_match(im1_path_crop, im2_path_crop, device) -> None:
     return warp, certainty
 
 
-@cache_output(func_name="get_drag_roma", override=False, verbose=False)
 def get_drag_roma(
     im1,
     im2,
@@ -48,8 +46,10 @@ def get_drag_roma(
     ##############################################################################
     union_bbox, cropped_img1, cropped_img2 = crop_two_image_with_alpha(im1, im2)
 
-    im1_path_crop = f"/tmp/.cache/{cropped_img1.sum().item()}_im1.png"
-    im2_path_crop = f"/tmp/.cache/{cropped_img2.sum().item()}_im2.png"
+    # mkdir .cache
+    os.makedirs(".cache", exist_ok=True)
+    im1_path_crop = f".cache/{cropped_img1.sum().item()}_im1.png"
+    im2_path_crop = f".cache/{cropped_img2.sum().item()}_im2.png"
 
     save_img(cropped_img1, im1_path_crop)
     save_img(cropped_img2, im2_path_crop)

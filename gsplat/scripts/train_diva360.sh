@@ -10,7 +10,7 @@ object_name=$2
 frame_index=$3
 # 0239 0217
 
-data_dir=./gsplat/data/diva360_processed/${object_name}_${frame_index}/
+data_dir=./data/diva360_processed/${object_name}_${frame_index}/
 if [ ! -d $data_dir ]; then
     bash scripts/preprocess_diva360.sh $object_name $frame_index | true
 fi

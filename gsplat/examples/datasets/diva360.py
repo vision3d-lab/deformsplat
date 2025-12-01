@@ -88,7 +88,7 @@ class SceneManagerDiva360:
 
 # Example usage
 if __name__ == "__main__":
-    json_path = "./gsplat/data/diva360_processed/penguin_0217/cameras.json"
+    json_path = "./data/diva360_processed/penguin_0217/cameras.json"
     manager = SceneManagerDiva360(json_path)
     manager.load_cameras_from_json()
     manager.load_extrinsics_from_json()

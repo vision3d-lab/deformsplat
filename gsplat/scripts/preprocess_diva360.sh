@@ -9,7 +9,7 @@ frame_index=$2
 
 # Diva360
 data_folder=/data/rvi/dataset
-origin_folder=${data_folder}/Diva360_data/processed_data/${object_name}/frames_1
+origin_folder=${data_folder}/diva360/${object_name}/frames_1
 processed_folder=data/diva360_processed/${object_name}_${frame_index}
 
 # link images
@@ -26,8 +26,8 @@ if [ ${object_name} == "hour_glass" ]; then
     python gesi/rgb_zero_where_alpha_zero.py --folder_path ${processed_folder}/images/
 fi
 # create camera meta json
-train_json_path=${data_folder}/Diva360_data/processed_data/${object_name}/transforms_train.json
-val_json_path=${data_folder}/Diva360_data/processed_data/${object_name}/transforms_val.json
+train_json_path=${data_folder}/diva360/${object_name}/transforms_train.json
+val_json_path=${data_folder}/diva360/${object_name}/transforms_val.json
 merged_json_path=${processed_folder}/cameras.json
 
 jq -s '{

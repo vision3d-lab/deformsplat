@@ -535,6 +535,7 @@ class DeformRunner(Runner):
             single_finetune=False,
             cam_idx=self.cfg.cam_idx,
         )
+        breakpoint()
         trainloader = DataLoader(trainset, batch_size=1)
         device = self.device
 
@@ -567,6 +568,7 @@ class DeformRunner(Runner):
                 drag_from, drag_to, bbox = get_drag_roma(img1, img2, cycle_threshold=self.hpara.cycle_threshold, device=device)
             except:
                 try:
+                    # try once more
                     drag_from, drag_to, bbox = get_drag_roma(img1, img2, cycle_threshold=self.hpara.cycle_threshold, device=device)
                 except:
                     continue
@@ -700,7 +702,7 @@ class DeformRunner(Runner):
             )
         elif cfg.render_traj_path == "diva360_circle":
             object_name = cfg.object_name.split("_[")[0]
-            json_path = f"./gsplat/data/Diva360_data/processed_data/{object_name}/transforms_circle.json"
+            json_path = f"./data/Diva360_data/processed_data/{object_name}/transforms_circle.json"
             camtoworlds_all = json_to_cam2world(json_path, self.parser.transform)
             camtoworlds_all = generate_interpolated_path(
                 camtoworlds_all, 1
@@ -708,7 +710,7 @@ class DeformRunner(Runner):
 
         elif cfg.render_traj_path == "diva360_spiral":
             object_name = cfg.object_name.split("_[")[0]
-            json_path = f"./gsplat/data/Diva360_data/processed_data/{object_name}/transforms_spiral_hr.json"
+            json_path = f"./data/Diva360_data/processed_data/{object_name}/transforms_spiral_hr.json"
             camtoworlds_all = json_to_cam2world(json_path, self.parser.transform)
             camtoworlds_all = generate_interpolated_path(
                 camtoworlds_all, 1

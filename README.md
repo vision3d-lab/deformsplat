@@ -15,8 +15,8 @@ This is the official code for `Rigidity-Aware 3D Gaussian Deformation from a Sin
 
 # 1. Enviroment setup
 ```
-conda create --name deformsplat python=3.10
-conda deformsplat deformsplat
+conda create -y --name deformsplat python=3.10
+conda activate deformsplat
 
 pip install torch==2.4.1+cu118 torchvision --index-url https://download.pytorch.org/whl/cu118
 pip install ninja numpy jaxtyping rich
@@ -67,7 +67,7 @@ data
 
 Or you can download original dataset and preprocess it.
 
-Then, you can test arbitrary frame other than those used in the paper.
+Then, you can test arbitrary frame other than those used in our paper.
 
 <details>
 <summary>Download Diva360 (~1.8TB) </summary>
@@ -93,9 +93,8 @@ data
 
 <details>
 <summary>Download DFA (~200GB)</summary>
-
-Download the data from the link below and arrange the files as shown.  
-[Download Link](https://www.dropbox.com/scl/fo/j68f78vlzt9q2z334294u/AETtMJY0yOOeHyby6SgJLhk/processed_data?rlkey=7e59p9e9ex8lakyuslrhg9afj&subfolder_nav_tracking=1&dl=0)
+<!-- Download the data from the link below and arrange the files as shown.  
+[Download Link](https://www.dropbox.com/scl/fo/j68f78vlzt9q2z334294u/AETtMJY0yOOeHyby6SgJLhk/processed_data?rlkey=7e59p9e9ex8lakyuslrhg9afj&subfolder_nav_tracking=1&dl=0) -->
 
 ```
 data

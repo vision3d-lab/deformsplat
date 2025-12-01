@@ -7,29 +7,12 @@ import numpy as np
 from sklearn.cluster import DBSCAN
 
 from jhutil.algorithm import knn
-from jhutil import cache_output
 from .loss import arap_loss, drag_loss
 from .mini_pytorch3d import (
     matrix_to_quaternion,
     quaternion_multiply,
     quaternion_to_matrix,
 )
-
-import torch_fpsample
-
-
-def load_points_and_anchor(ckpt_path):
-    ckpt = torch.load(ckpt_path)
-    if "clustered" not in ckpt:
-        ckpt["splats"] = cluster_largest(ckpt["splats"])
-        ckpt["clustered"] = True
-        torch.save(ckpt, ckpt_path)
-
-    points = ckpt["splats"]["means"]
-    # anchor = voxelize_pointcloud_and_get_means(points, 0.04)
-    anchor, _ = torch_fpsample.sample(points.detach().cpu(), 500)
-
-    return points, anchor
 
 
 def save_points_and_anchor(points, anchor, ckpt_path):
@@ -507,7 +490,6 @@ def deform_point_cloud_arap_2d(
     return points_deformed, blended_quats, target_indices
 
 
-@cache_output(func_name="knn_djastra", verbose=False)
 @torch.no_grad()
 def knn_djastra(
     points: torch.Tensor,

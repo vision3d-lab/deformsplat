@@ -14,3 +14,6 @@ temp*
 __pycache__
 output*
 results*
+.cache/
+*.pyc
+__pycache__/
