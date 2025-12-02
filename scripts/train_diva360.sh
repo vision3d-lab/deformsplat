@@ -15,7 +15,7 @@ if [ ! -d $data_dir ]; then
     bash scripts/preprocess_diva360.sh $object_name $frame_index | true
 fi
 
-CUDA_VISIBLE_DEVICES=$GPU python examples/simple_trainer.py default \
+CUDA_VISIBLE_DEVICES=$GPU python simple_trainer.py default \
     --data_dir $data_dir \
     --result_dir ./results/diva360/${object_name}_${frame_index} \
     --data_factor 1 \

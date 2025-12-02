@@ -22,7 +22,7 @@ if [ ! -f $ckpt ]; then
 fi
 
 # 3. DeformSplat training
-CUDA_VISIBLE_DEVICES=$GPU python examples/deformsplat_trainer.py default \
+CUDA_VISIBLE_DEVICES=$GPU python deform_splat.py default \
     --data_dir $data_dir \
     --result_dir ./results/diva360_finetune/${object_name}_${index_from}_${index_to} \
     --ckpt ./results/diva360/${object_name}_${index_from}/ckpts/ckpt_best_psnr.pt \
