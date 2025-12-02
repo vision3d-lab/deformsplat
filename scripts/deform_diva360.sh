@@ -37,5 +37,5 @@ CUDA_VISIBLE_DEVICES=$GPU python deform_splat.py default \
     --cam_idx $cam_idx \
     --disable_viewer \
     --render_traj_simple \
-    --video_path ./output_video/${object_name}.mp4
+    --video_path ./output_video/diva360/${object_name}.mp4
 

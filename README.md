@@ -22,6 +22,7 @@ pip install torch==2.4.1+cu118 torchvision --index-url https://download.pytorch.
 pip install ninja numpy jaxtyping rich
 pip install gsplat --index-url https://docs.gsplat.studio/whl/pt24cu118
 pip install --upgrade https://github.com/unlimblue/KNN_CUDA/releases/download/0.2/KNN_CUDA-0.2-py3-none-any.whl
+pip install --no-build-isolation git+https://github.com/rahul-goel/fused-ssim@328dc9836f513d00c4b5bc38fe30478b4435cbb5
 pip install -r requirements.txt
  ```
 
@@ -39,10 +40,10 @@ Plase download preprocessed diva360 and DFA data:
 mkdir data && cd data
 
 # diva360 (~200MB)
-gdown 1lRq22wxogt8x8TdCdd6AMZRieElrjO1w && unzip diva360_preprocessed.zip
+gdown 1lRq22wxogt8x8TdCdd6AMZRieElrjO1w && unzip diva360_processed.zip
 
 # dfa (~24GB)
-gdown 1Qdu0s-gogtQKyAa3BZ8BrDMCk8kdzzCf && unzip DFA_preprocessed.zip
+gdown 1Qdu0s-gogtQKyAa3BZ8BrDMCk8kdzzCf && unzip DFA_processed.zip
 
 
 ```
@@ -58,6 +59,10 @@ data
 |   |-- ...
 |
 |-- DFA_processed
+|   |-- penguin_0217
+|   |-- penguin_0239
+|   |-- blue_car_0142
+|   |-- ...
 
 ```
 
