@@ -29,7 +29,7 @@ pip install -r requirements.txt
 wandb login
 ```
 
-# 2. Run Diva360
+# 2. Run with Diva360 data
 
 ## 2.1 Data Setup
 Please download preprocessed diva360 data:
@@ -99,7 +99,7 @@ bash scripts/run_all_diva360.sh
 For executing other frames from our paper, please download the original data (see 2.1) and change `frame_from`, `frame_to`, and `cam_idx`.
 
 
-# 3. Run DFA
+# 3. Run with DFA data
 
 ## 3.1 Data Setup
 
