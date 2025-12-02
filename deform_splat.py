@@ -272,7 +272,7 @@ class DeformRunner(Runner):
 
     def log_final_group(self, bbox, group_id_all):
 
-        sh0_origin = self.update_sh_with_group_id()
+        sh0_origin = self.update_sh_with_group_id(group_id_all)
         with torch.no_grad():
             group_image, image_target = self.fetch_comparable_two_image(return_rgba=True)
 
