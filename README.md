@@ -2,7 +2,7 @@
 <!-- <div align="center"> -->
 <h1>DeformSplat</h1>
 
-<a href="https://arxiv.org/pdf/2509.22222"><img src="https://img.shields.io/badge/arXiv-2503.11651-b31b1b" alt="arXiv"></a>
+<a href="https://arxiv.org/abs/2509.22222"><img src="https://img.shields.io/badge/arXiv-2503.11651-b31b1b" alt="arXiv"></a>
 <a href="https://vision3d-lab.github.io/deformsplat/"><img src="https://img.shields.io/badge/Project_Page-green" alt="Project Page"></a>
 
 This is the official code for `Rigidity-Aware 3D Gaussian Deformation from a Single Image` represented on SIGGRAPH ASIA 25.
@@ -64,7 +64,7 @@ data
 
 Download the data from the link below and arrange the files as shown.  
 - [Diva360 Download Link](https://www.dropbox.com/scl/fo/j68f78vlzt9q2z334294u/AETtMJY0yOOeHyby6SgJLhk/processed_data?rlkey=7e59p9e9ex8lakyuslrhg9afj&subfolder_nav_tracking=1&dl=0)
-After Download original link, you can preprocess the data with the folowwing run command.
+
 
 ```
 data
@@ -81,6 +81,7 @@ data
 ```
 </details>
 
+After Download original link, you can preprocess the data with run command (see 2.2).
 ## 2.2 Run
 
 Please run the code below to test penguin example:
@@ -89,7 +90,7 @@ Please run the code below to test penguin example:
 bash scripts/deform_diva360.sh 0   penguin      0217        0239     00     
 ```
 
-If you want to run all Diva360 data from the [paper](https://arxiv.org/pdf/2509.22222), please run below:
+If you want to run all Diva360 data from our [paper](https://arxiv.org/pdf/2509.22222), please run below:
 
 ```
 bash scripts/run_all_diva360.sh
@@ -143,6 +144,8 @@ data
 |   |-- ...
 ```
 
+After Download original link, you can preprocess the data with run command (see 3.2).
+
 </details>
 
 ## 3.2 Run
@@ -153,7 +156,7 @@ Please run the code below to test wolf example:
 bash scripts/deform_dfa.sh ${GPU}   "wolf(Howling)"  10          60       24
 ```
 
-If you want to run all DFA data from the [paper](https://arxiv.org/pdf/2509.22222), please run below:
+If you want to run all DFA data from our [paper](https://arxiv.org/pdf/2509.22222), please run below:
 
 ```
 bash scripts/run_all_dfa.sh
