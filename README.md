@@ -7,10 +7,8 @@
 
 This is the official code for `Rigidity-Aware 3D Gaussian Deformation from a Single Image` represented on SIGGRAPH ASIA 25.
 
-<!-- </div> -->
-
 <p align="center">
-  <video src="teaser.mp4" controls autoplay loop muted width="100%"></video>
+  <img src="assets/teaser.gif" width="100%">
 </p>
 
 # 1. Enviroment setup
