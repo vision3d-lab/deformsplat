@@ -50,9 +50,6 @@ from einops import rearrange
 import torch.optim as optim
 import sys
 
-sys.path.append("../")
-sys.path.append("../RoMa")
-
 import torch.nn as nn
 from jhutil.algorithm import knn as knn_jh
 from util.helper import cluster_largest
@@ -785,7 +782,7 @@ class Runner:
     @torch.no_grad()
     def eval(self, step: int, stage: str = "val", is_pred_camtoworld=False):
         """Entry for evaluation."""
-        print("Running evaluation...")
+        print(f"Evaluation on step={step}...")
         cfg = self.cfg
         device = self.device
         world_rank = self.world_rank
@@ -869,7 +866,7 @@ class Runner:
                     "num_GS": len(self.splats["means"]),
                 }
             )
-            color_log(0000, f"PSNR: {stats['psnr']:.3f}, SSIM: {stats['ssim']:.4f}, LPIPS: {stats['lpips']:.3f} ")
+            color_log(0000, f"step{step:04d} - PSNR: {stats['psnr']:.3f}, SSIM: {stats['ssim']:.4f}, LPIPS: {stats['lpips']:.3f} ")
             print(
                 f"Time: {stats['ellipse_time']:.3f}s/image "
                 f"Number of GS: {stats['num_GS']}"
@@ -882,7 +879,7 @@ class Runner:
                     "psnr": stats["psnr"],
                     "ssim": stats["ssim"],
                     "lpips": stats["lpips"],
-                    "img_diff": img_diffs,
+                    "test_diff": img_diffs,
                 }
                 wandb.log(logging_data, step=step)
                 

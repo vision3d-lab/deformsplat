@@ -8,9 +8,9 @@ frame_index=$2
 
 
 # Diva360
-data_folder=/data/rvi/dataset
+data_folder=./data
 origin_folder=${data_folder}/diva360/${object_name}/frames_1
-processed_folder=data/diva360_processed/${object_name}_${frame_index}
+processed_folder=${data_folder}/diva360_processed/${object_name}_${frame_index}
 
 # link images
 mkdir -p ${processed_folder}/images
@@ -23,7 +23,7 @@ for cam_folder in ${cam_list}; do
 done
 
 if [ ${object_name} == "hour_glass" ]; then
-    python gesi/rgb_zero_where_alpha_zero.py --folder_path ${processed_folder}/images/
+    python util/rgb_zero_where_alpha_zero.py --folder_path ${processed_folder}/images/
 fi
 # create camera meta json
 train_json_path=${data_folder}/diva360/${object_name}/transforms_train.json

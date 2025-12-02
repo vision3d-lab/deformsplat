@@ -7,6 +7,7 @@ from tqdm import tqdm
 from simple_trainer import Runner
 from simple_trainer import *
 
+breakpoint()
 from util.loss import arap_loss, drag_loss, arap_loss_grouped
 from util.mini_pytorch3d import quaternion_to_matrix
 from jhutil.algorithm import knn as knn_jh
@@ -178,25 +179,6 @@ class DeformRunner(Runner):
                 bbox=bbox,
                 skip_line=True,
             )
-            for i in range(0, 5):
-                group_id_all_tmp = torch.where(
-                    group_id_all == i, group_id_all, -1
-                )
-                sh0_origin = self.update_sh_with_group_id(group_id_all_tmp)
-                with torch.no_grad():
-                    group_image, _ = self.fetch_comparable_two_image(return_rgba=True)
-
-                group_image = rearrange(group_image[0], "h w c -> c h w")
-                from jhutil import show_matching as _show_matching
-                group_image = _show_matching(img1, group_image, bbox=bbox, skip_line=True)
-                self.splats["sh0"] = sh0_origin
-                
-                images = [
-                    wandb.Image(origin_image, caption="origin_image"),
-                    wandb.Image(matching_image, caption="matching_image"),
-                ]
-                wandb.log({"matching": images})
-                wandb.log({"group_image": [wandb.Image(group_image, caption="initial_group")]})
         
 
         ##########################################################
@@ -320,17 +302,6 @@ class DeformRunner(Runner):
         image_final_group = show_matching(im1, im2, bbox=bbox, skip_line=True)
         wandb.log({"group_image": [wandb.Image(image_final_group, caption="final_group")]})
         
-        points_final = self.splats["means"].clone().detach()
-        quats_final = self.splats["quats"].clone().detach()
-
-        with torch.no_grad():
-            self.splats["means"] = points_init
-            self.splats["quats"] = quats_init
-            group_image, image_target = self.fetch_comparable_two_image(return_rgba=True)
-            self.splats["means"] = points_final
-            self.splats["quats"] = quats_final
-            im2 = rearrange(group_image[0], "h w c -> c h w")
-        wandb.log({"group_image": [wandb.Image(im2, caption="final_group_2")]})
 
 
     def get_visibility_mask(self):
@@ -535,12 +506,11 @@ class DeformRunner(Runner):
             single_finetune=False,
             cam_idx=self.cfg.cam_idx,
         )
-        breakpoint()
         trainloader = DataLoader(trainset, batch_size=1)
         device = self.device
 
         max_covered_path = -1
-        for data in trainloader:
+        for data in tqdm(trainloader, desc="Estimating camtoworlds", total=len(trainloader)):
             Ks = data["K"].to(device)  # [1, 3, 3]
             image_ids = data["image_id"].to(device)
             gt_images = data["image"].to(device) / 255.0  # [1, H, W, 3]

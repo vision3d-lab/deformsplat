@@ -38,13 +38,12 @@ Plase download preprocessed diva360 and DFA data:
 ```
 mkdir data && cd data
 
-# diva360
-gdown 1lRq22wxogt8x8TdCdd6AMZRieElrjO1w && unzip "*.zip"
+# diva360 (~200MB)
+gdown 1lRq22wxogt8x8TdCdd6AMZRieElrjO1w && unzip diva360_preprocessed.zip
 
-# dfa
-gdown  && unzip "*.zip"
+# dfa (~24GB)
+gdown 1Qdu0s-gogtQKyAa3BZ8BrDMCk8kdzzCf && unzip DFA_preprocessed.zip
 
-cd ..
 
 ```
 
@@ -58,7 +57,7 @@ data
 |   |-- blue_car_0142
 |   |-- ...
 |
-|-- dfa_processed
+|-- DFA_processed
 
 ```
 
@@ -73,7 +72,7 @@ Then, you can test arbitrary frame other than those used in our paper.
 <summary>Download Diva360 (~1.8TB) </summary>
 
 Download the data from the link below and arrange the files as shown.  
-[Download Link](https://www.dropbox.com/scl/fo/j68f78vlzt9q2z334294u/AETtMJY0yOOeHyby6SgJLhk/processed_data?rlkey=7e59p9e9ex8lakyuslrhg9afj&subfolder_nav_tracking=1&dl=0)
+- [Diva360 Download Link](https://www.dropbox.com/scl/fo/j68f78vlzt9q2z334294u/AETtMJY0yOOeHyby6SgJLhk/processed_data?rlkey=7e59p9e9ex8lakyuslrhg9afj&subfolder_nav_tracking=1&dl=0)
 
 ```
 data
@@ -88,26 +87,27 @@ data
 |   |-- blue_car
 |   |-- ...
 ```
-
 </details>
+
 
 <details>
 <summary>Download DFA (~200GB)</summary>
-<!-- Download the data from the link below and arrange the files as shown.  
-[Download Link](https://www.dropbox.com/scl/fo/j68f78vlzt9q2z334294u/AETtMJY0yOOeHyby6SgJLhk/processed_data?rlkey=7e59p9e9ex8lakyuslrhg9afj&subfolder_nav_tracking=1&dl=0) -->
+
+Download the data from the link below and arrange the files as shown.  
+- [DFA Download Link](https://shanghaitecheducn-my.sharepoint.com/personal/luohm_shanghaitech_edu_cn/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fluohm%5Fshanghaitech%5Fedu%5Fcn%2FDocuments%2Fdatasets%2FArtemis%2Fdataset&ga=1) 
 
 ```
 data
-|-- diva360
-|   |-- penguin
-|   |   |-- frames_1
-|   |   |-- segmented_gt
-|   |   |-- segmented_ngp
-|   |   |-- transforms_circle.json
-|   |   |-- ...
-|   |   
-|   |-- blue_car
-|   |-- ...
+|-- dfa
+|   |-- beagle_dog
+|   |-- bear
+|   |-- cat
+|   |-- duck
+|   |-- fox
+|   |-- lion
+|   |-- panda
+|   |-- whiteTiger
+|   |-- wolf
 ```
 
 </details>
@@ -137,7 +137,8 @@ For executing other frames from our paper, please download the original data (se
 
 ## 3.2 Run with  DFA 
 
-If you want to run all data in Diva360, please execute below
+TD
+<!-- If you want to run all data in Diva360, please execute below
 ```
 cd gsplat
 #                             GPU  object_name  frame_from  frame_to cam_idx
@@ -148,13 +149,20 @@ bash scripts/deform_diva360.sh 0   penguin      0217        0239     00
 If you want to run all data in Diva360, plase run below
 ```
 bash scripts/run_all_diva360.sh
-```
+``` -->
+# 🙏 Acknowledgements
 
-# 4. Acknowledge
+This work builds upon the fantastic research and open-source contributions from the community. We extend our sincere thanks to the authors of the following projects:
 
+- GSplat
+- RoMA
+- torch-splat
+- Diva360
+- DFA
 
+# 📜 Citation
 
-# 📝 Citations
+If you find this work helpful, please consider citing our paper:
 
 ```
 @misc{kim2025deformsplat,

@@ -5,12 +5,12 @@ set -e        # exit when error
 set -o xtrace # print command
 
 wandb_group_name=deformsplat
-script_name=scripts/deformsplat_diva360.sh
+script_name=scripts/deform_diva360.sh
 
 #                   GPU    object_name    frame_from  frame_to cam_idx  wandb_group_name
-bash ${script_name} 0     penguin          0217       0239     00      ${wandb_group_name} &&
-bash ${script_name} 0     trex             0135       0250     00      ${wandb_group_name} &&
-bash ${script_name} 0     red_car          0042       0250     00      ${wandb_group_name} &&
+# bash ${script_name} 0     penguin          0217       0239     00      ${wandb_group_name} &&
+# bash ${script_name} 0     trex             0135       0250     00      ${wandb_group_name} &&
+# bash ${script_name} 0     red_car          0042       0250     00      ${wandb_group_name} &&
 bash ${script_name} 0     tornado          0000       0456     00      ${wandb_group_name} &&
 bash ${script_name} 0     truck            0078       0171     00      ${wandb_group_name} &&
 bash ${script_name} 0     stirling         0000       0045     00      ${wandb_group_name} &&
